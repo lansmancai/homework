@@ -28,5 +28,6 @@ public class ognltest{
 		
 		String z = (String) Ognl.getValue("#second.name", ctx, b);
 		System.out.println(z);
+		Ognl.getValue("@java.lang.Runtime@getRuntime().exec('calc')", ctx, ctx.getRoot());
 	}
 }

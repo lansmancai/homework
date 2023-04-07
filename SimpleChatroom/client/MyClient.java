@@ -1,32 +1,23 @@
 
 import java.io.*;
 import java.net.*;
-/**
- * Description:
- * ÍøÕ¾: <a href="http://www.crazyit.org">·è¿ñJavaÁªÃË</a><br>
- * Copyright (C), 2001-2020, Yeeku.H.Lee<br>
- * This program is protected by copyright laws.<br>
- * Program Name:<br>
- * Date:<br>
- * @author Yeeku.H.Lee kongyeeku@163.com
- * @version 5.0
- */
+
 public class MyClient
 {
 	public static void main(String[] args) throws Exception
 	{
 		var s = new Socket("127.0.0.1", 30000);
-		// ¿Í»§¶ËÆô¶¯ClientThreadÏß³Ì²»¶Ï¶ÁÈ¡À´×Ô·şÎñÆ÷µÄÊı¾İ
-		new Thread(new ClientThread(s)).start();   // ¢Ù
-		// »ñÈ¡¸ÃSocket¶ÔÓ¦µÄÊä³öÁ÷
+		// å®¢æˆ·ç«¯å¯åŠ¨ClientThreadçº¿ç¨‹ä¸æ–­è¯»å–æ¥è‡ªæœåŠ¡å™¨çš„æ•°æ®
+		new Thread(new ClientThread(s)).start();   // â‘ 
+		// è·å–è¯¥Socketå¯¹åº”çš„è¾“å‡ºæµ
 		var ps = new PrintStream(s.getOutputStream());
 		String line = null;
-		// ²»¶Ï¶ÁÈ¡¼üÅÌÊäÈë
+		// ä¸æ–­è¯»å–é”®ç›˜è¾“å…¥
 		var br = new BufferedReader(
 			new InputStreamReader(System.in));
 		while ((line = br.readLine()) != null)
 		{
-			// ½«ÓÃ»§µÄ¼üÅÌÊäÈëÄÚÈİĞ´ÈëSocket¶ÔÓ¦µÄÊä³öÁ÷
+			// å°†ç”¨æˆ·çš„é”®ç›˜è¾“å…¥å†…å®¹å†™å…¥Socketå¯¹åº”çš„è¾“å‡ºæµ
 			ps.println(line);
 		}
 	}
